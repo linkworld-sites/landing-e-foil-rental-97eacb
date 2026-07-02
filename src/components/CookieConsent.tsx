@@ -12,7 +12,7 @@ const KEY = "lw_consent";
 export function CookieConsent() {
   const [show, setShow] = useState(false);
   useEffect(() => {
-    if (FUNNEL_JURISDICTION !== "eu") return;
+    if ((FUNNEL_JURISDICTION as string) !== "eu") return;
     try {
       if (!localStorage.getItem(KEY)) setShow(true);
     } catch {
@@ -20,7 +20,7 @@ export function CookieConsent() {
     }
   }, []);
 
-  if (FUNNEL_JURISDICTION !== "eu" || !show) return null;
+  if ((FUNNEL_JURISDICTION as string) !== "eu" || !show) return null;
 
   const save = (analytics: boolean, marketing: boolean) => {
     try {
